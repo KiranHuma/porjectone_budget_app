@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+.backgroundimg{
+  background-image: url(./bordr.jpg);
+  background-repeat: no-repeat;
+  background-size: 1000px 700px;
+  
+}
+html {
+  scroll-behavior: auto;
+}
+#section2 {
+  height: 100px;
+  background-color: yellow;
+}
 .container{
 max-width: 400px;
 min-height: 450px;
@@ -6,20 +22,55 @@ background-color: white;
 box-shadow: 0 0 10px gray;
 margin-top:  50px;
 padding: 15px 50px; 
+scroll-snap-align: left;
+
 }
+
 .text-center{
   text-align: center;
+}
+.text-center-status{
+  background-color:green;
+  border: none;
+  color: white;
+  padding: 16px 25px;
+  text-align: center;
+  font-size: 20px;
+  margin: 1px 1px;
+  opacity: 0.6;
+  transition: 0.3s;
+
 }
 .expense-container{
   display: flex;
   justify-content: space-around;
-  background-color: white;
+ 
   box-shadow: 0 0 10px gray;
 }
-.transaction-list{
-  margin:0;
-  padding: 0;
+.income-h3{
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 26px 82px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.expense-h3{
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 26px 82px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  transition: transform .2s; /* Animation */
 
+ 
 }
 .transaction-list > li{
   display: flex;
@@ -31,10 +82,123 @@ padding: 15px 50px;
   border-radius: 4px;
   
 }
-
-.transaction-form input{
-  width:100%;
-  margin:10px 0;
-  padding:5px 5px;
+.delete-btn:focus {
+  outline: 0;
+}
+.history_tex{
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 10px;
+    margin: 40px 0 10px;
+    text-align: center;
+  
+}
+.transaction-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+  
 }
 
+.transaction-list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.transaction-list li.minus {
+  border-right: 5px solid #c0392b;
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(248, 241, 241, 0.705); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000be; 
+}
+
+.transaction-form input{
+  width:93%;
+  margin:13px 0;
+  padding:8px 8px;
+  box-sizing: content-box;
+  
+  
+}
+.addtrans
+{
+  background-color:green;
+  border: none;
+  color: white;
+  padding: 16px 25px;
+  text-align: center;
+  font-size: 20px;
+  margin: 4px 1px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.btn {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 20px;
+  margin: 4px 1px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 4;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.transaction-list li:hover .delete-btn {
+  opacity: 1;
+}
+
+
+.expense-h3:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+
+
+.btn:hover {opacity: 1}
+.addtrans:hover {opacity: 1;}
+.text-center-status:hover {opacity: 1}
+@media (max-width: 320px) {
+  .container {
+    width: 300px;
+  }
+}
