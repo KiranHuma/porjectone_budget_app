@@ -1,27 +1,32 @@
 import React, { useContext, useState } from 'react';
 import { TransactionContext } from './transContext';
+import Transaction from './Transaction';
 import swal from 'sweetalert';
 
 
 
 function Child(transaction) {
   let { transactions, addTransaction, deleteTransaction,editTransaction } = useContext(TransactionContext);
-  const sign = transaction.amount < 0 ? '-' : '+';
-  let [newDesc, setDesc] = useState("");
-  let [newAmount, setAmount] = useState(0);
+ // let sign = transaction.amount < 0 ? '-' : '+';
+  let [desc, setDesc] = useState("");
+  let [amount, setAmount] = useState(0);
 
   const handleAddition = (event) => {
     event.preventDefault();
-    if (Number(newAmount) === 0) {
+    if (Number(amount) === 0) {
       alert("Please enter correct values");
       return false;
     }
     addTransaction({
-      amount: Number(newAmount),
-      desc: newDesc
+      id:Math.floor(Math.random() * 100000000),
+      desc,
+      amount : +amount
+      // desc: newDesc,
+      // amount: Number(newAmount),
+      
     });
-    setDesc('');
-    setAmount(0);
+    // setDesc('');
+    // setAmount(0);
   }
 
   // deleteTransaction ({
@@ -51,11 +56,11 @@ function Child(transaction) {
     let num = 0;
     for (var i = 0; i < transactions.length; i++) {
       if (transactions[i].amount < 0)
-        swal('Your Expenses are more than income.You keep check on your spendings');
+        swal('Your Expenses are more than income.You should keep check on your spendings');
         else
         for (var i = 0; i < transactions.length; i++) {
           if (transactions[i].amount > 0)
-          swal('blanced income');
+          swal('Blanced Account');
     }}
     
      
@@ -79,7 +84,6 @@ function Child(transaction) {
   
      
       <ul className="transaction-list" >
-
    {transactions.map(transaction => (<li  className={transaction.amount < 0 ? 'minus':'plus'} 
    key={transaction.id} transaction={transaction}>
   
@@ -87,22 +91,20 @@ function Child(transaction) {
    <button onClick={()=> deleteTransaction(transaction.id)} className="delete-btn">x</button>
      </li>
    ))}    
-
 </ul>
 </> */}
       <h3 className="history_tex">History</h3>
 
 
-      <ul className="transaction-list" >
+      <ul className="list" >
       
-        {transactions.map(transaction => <li className={transaction.amount < 0 ? 'minus' : 'plus'}
-          key={transaction.id} >
-          <span>{transaction.desc}</span>
-          <span>${transaction.amount}</span>
-          <button onClick={() => deleteTransaction(transaction.id)} >x</button>
+        {transactions.map(transaction => (<Transaction key={transaction.id} transaction={transaction}
+        className={transaction.amount < 0 ? 'minus':'plus'}/>))} 
+    {transaction.desc} <span>{transaction.amount}</span>
+    <button onClick={()=> deleteTransaction(transaction.id)} className="delete-btn">x</button>
 
-        </li>
-        )}
+       
+       
       </ul>
 
 
@@ -111,7 +113,7 @@ function Child(transaction) {
       <form className="transaction-form" onSubmit={handleAddition}>
         <label>Enter Description <br />
           <input type="text"
-            value={newDesc}
+            value={desc}
             placeholder="Description"
             onChange={(ev) => setDesc(ev.target.value)}
             required />
@@ -119,7 +121,7 @@ function Child(transaction) {
         <br />
         <label>Enter Amount<br />
           <input type="number"
-            value={newAmount}
+            value={amount}
             placeholder="Enter your amount"
             onChange={(ev) => setAmount(ev.target.value)}
             required />

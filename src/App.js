@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Child from './child';
 import {TransactionProvider} from './transContext';
+// import TransactionList from './TransactionList.js';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
    
      < TransactionProvider>     
       <Child/>
+      {/* <TransactionList/> */}
      </TransactionProvider>
      
       

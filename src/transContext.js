@@ -3,7 +3,10 @@ import transReducer from './transReducer';
 
 const initialTransactions = {
     transactions: [
-
+       { id: 1, desc: 'Flower', amount: -20 },
+           { id: 2, desc: 'Salary', amount: 300 },
+        //    { id: 3, text: 'Book', amount: -10 },
+        //   { id: 4, text: 'Camera', amount: 150 }
     ]
 }
 export const TransactionContext = createContext(initialTransactions);
